@@ -1,1 +1,1 @@
-# PersonalExpenses-React
+# Personal Expenses on React/Typescript with using SASS and MUI
