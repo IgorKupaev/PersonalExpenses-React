@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { FC, useEffect, useState } from 'react'
-import Modal from '../components/Modal'
 import Form from './../components/Form'
 import ItemsList from './../components/ItemsList'
 import Title from './../components/Title'

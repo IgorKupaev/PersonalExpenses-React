@@ -45,7 +45,7 @@ const Form: FC<FormProps> = ({fetch}) => {
       <TextField
         onChange={e => setReason(e.target.value)}
         value={reason}
-        color='secondary'
+        color='success'
         fullWidth id="outlined-basic"
         label="Куда потрачено"
         variant="outlined"
@@ -53,7 +53,7 @@ const Form: FC<FormProps> = ({fetch}) => {
       <TextField
         onChange={e => setCost(e.target.value)}
         value={cost}
-        color='secondary'
+        color='success'
         type='number'
         fullWidth
         id="outlined-basic"
@@ -61,7 +61,7 @@ const Form: FC<FormProps> = ({fetch}) => {
         variant="outlined"
       />
       <div className="formButtonContainer">
-        <Button onClick={createItem} color="secondary" size="large" variant="contained">
+        <Button onClick={createItem} color="success" size="large" variant="contained">
           Добавить
         </Button>
       </div>

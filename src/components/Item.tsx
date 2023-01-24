@@ -23,15 +23,15 @@ const Item: FC<itemProps> = ({item, index, remove, modalInit}) => {
   return (
     <ListItem
       id={index}
-      style={{background: "#cddcfe"}}
+      style={{background: "#fafafa"}}
       divider
     >
       <ListItemText
         primary={`${Number(index) + 1}. ${item.place}, ${item.date}, ${item.cost}₽`}
       />
-      <EditIcon onClick={() => modalInit(index)} style={{cursor: 'pointer', marginRight: 7}} color='secondary' />
+      <EditIcon onClick={() => modalInit(index)} style={{cursor: 'pointer', marginRight: 7}} color='success' />
       <span onClick={clickHandler} ref={itemRef}>
-        <DeleteIcon  style={{cursor: 'pointer'}} color='secondary' />
+        <DeleteIcon  style={{cursor: 'pointer'}} color='success' />
       </span>
     </ListItem>
   )

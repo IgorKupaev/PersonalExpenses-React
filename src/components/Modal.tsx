@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { Button, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
-import { IModalInputs, SpendingItem } from '../types/types';
+import { IModalInputs } from '../types/types';
 
 interface ModalProps {
   modal: boolean,
@@ -22,7 +22,7 @@ const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, ed
           fullWidth
           label="Куда было потрачено"
           variant="filled"
-          color="secondary"
+          color="success"
         />
         <TextField
           type="number"
@@ -31,7 +31,7 @@ const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, ed
           fullWidth
           label="Сколько было потрачено"
           variant="filled"
-          color="secondary"
+          color="success"
         />
         <TextField
           type="date"
@@ -40,12 +40,12 @@ const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, ed
           fullWidth
           label="Когда было потрачено"
           variant="filled"
-          color="secondary"
+          color="success"
         />
         <Button
           onClick={editItem}
           style={{marginTop: 5}}
-          color='secondary'
+          color='success'
           variant="contained"
         >
           Изменить

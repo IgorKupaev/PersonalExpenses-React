@@ -40,9 +40,9 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
           modalInputs.cost
           && modalInputs.place
           && modalInputs.date
-          && modalInputs.cost !== item.cost
+          && (modalInputs.cost !== item.cost
           || modalInputs.place !== item.place
-          || modalInputs.date !== item.date
+          || modalInputs.date !== item.date)
          ) {
         const body = {
           ...modalInputs, id: spendingItems[Number(changeId)]._id

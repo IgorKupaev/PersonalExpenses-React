@@ -1,16 +1,17 @@
-$purple: #9c27b0;
-$backColor: #cddcfe;
+$purple: #2e7d32;
+$backColor: #fafafa;
 $borderRadius: 3px;
-$boxShadow: 1px 0px 3px #000;
+$boxShadow: 1px 0px 5px #2e7d32;
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  user-select: none;
 }
 body {
-  background-color: rgb(224, 241, 255);
+  background-color: rgb(255, 255, 255);
 }
 .app {
   width: 100%;
@@ -24,7 +25,7 @@ body {
   font-weight: bold;
   text-align: center;
   margin: 10px 0;
-  color: $purple;
+  color: black;
 }
 .form {
   display: flex;
