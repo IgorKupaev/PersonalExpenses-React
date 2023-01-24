@@ -45,6 +45,14 @@ body {
   position: relative;
   box-shadow: $boxShadow;
   z-index: 2;
+  & >* {
+    cursor: pointer;
+    transition: all .2s ease;
+    background: #fafafa;
+  }
+  & >*:hover {
+    background: #2e7d326b;
+  }
 }
 .totalCost {
   margin: 15px 5px;
@@ -52,6 +60,19 @@ body {
   justify-content: flex-end;
   align-items: center;
   font-size: 18px;
+}
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & >*:not(:last-child) {
+    margin-bottom: 7px
+  }
+  & >* {
+    font-size: 18px;
+    background-color: #fafafa;
+    padding: 15px
+  }
 }
 @media (max-width: 767px) {
   .title {

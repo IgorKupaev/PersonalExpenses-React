@@ -9,6 +9,7 @@ interface itemProps {
   index: string,
   modalInit: (value: string) => void,
   removeInit: (id: string) => void,
+  openPage: (item: SpendingItem) => void
 }
 
 const getShortString = (str: string) => {
@@ -18,12 +19,12 @@ const getShortString = (str: string) => {
   return str;
 }
 
-const Item: FC<itemProps> = ({item, index, modalInit, removeInit}) => {
+const Item: FC<itemProps> = ({item, index, modalInit, removeInit, openPage}) => {
   const itemRef = useRef<HTMLSpanElement | null>(null);
   return (
     <ListItem
+      onClick={() => openPage(item)}
       id={index}
-      style={{background: "#fafafa"}}
       divider
     >
       <ListItemText

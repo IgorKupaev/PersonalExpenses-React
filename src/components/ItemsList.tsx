@@ -4,6 +4,8 @@ import Item from './Item';
 import axios from 'axios';
 import Modal from './Modal';
 import ConfirmRemove from './ConfirmRemove';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
 interface ListProps {
   spendingItems: SpendingItem[],
@@ -18,6 +20,8 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
   })
   const [changeId, setChangeId] = useState<string>('');
   const [removeId, setRemoveId] = useState<string>('');
+
+  const navigate = useNavigate();
 
   const modalInit = (id: string) => {
     setChangeId(id);
@@ -62,8 +66,42 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
     } catch (error) {
     }
   }
+  if (spendingItems.length) {
+    return (
+      <>
+        <ConfirmRemove
+          confirmRemove={confirmRemove}
+          setConfirmRemove={setConfirmRemove}
+          removeItem={removeItem}
+        />
+        <Modal
+          setModalInputs={setModalInputs}
+          modalInputs={modalInputs}
+          setModal={setModal}
+          modal={modal}
+          editItem={editItem}
+        />
+        <div className="list">
+          {
+          spendingItems.map((item, index) => {
+            return (
+              <Item
+                openPage={(item) => navigate(`/${item._id}`)}
+                removeInit={removeInit}
+                modalInit={modalInit}
+                key={item._id}
+                item={item}
+                index={String(index)}
+              />
+            )
+          })
+          }
+        </div>
+      </>
+    )
+  }
   return (
-    <div className="list">
+    <>
       <ConfirmRemove
         confirmRemove={confirmRemove}
         setConfirmRemove={setConfirmRemove}
@@ -76,19 +114,12 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
         modal={modal}
         editItem={editItem}
       />
-      {spendingItems.map((item, index) => {
-        return (
-          <Item
-            removeInit={removeInit}
-            modalInit={modalInit}
-            key={item._id}
-            item={item}
-            index={String(index)}
-          />
-        )
-      })}
-    </div>
+      <div className="list">
+        <CircularProgress color="success" />
+      </div>
+    </>
   )
+  
 }
 
 export default ItemsList;
