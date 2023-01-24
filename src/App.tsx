@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
-import './App.scss'
-import MainPage from './pages/MainPage'
-
+import React, { FC } from 'react';
+import './App.scss';
+import MainPage from './pages/MainPage';
 
 const App:FC = () => {
   return (
@@ -13,4 +12,4 @@ const App:FC = () => {
   )
 }
 
-export default App
+export default App;

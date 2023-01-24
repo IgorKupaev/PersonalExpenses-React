@@ -1,16 +1,16 @@
-$purple: #9c27b0;
-$backColor: #cddcfe;
+$purple: #2e7d32;
+$backColor: #fafafa;
 $borderRadius: 3px;
-$boxShadow: 1px 0px 3px #000;
-
+$boxShadow: 1px 0px 5px #2e7d32;
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  user-select: none;
 }
 body {
-  background-color: rgb(224, 241, 255);
+  background-color: rgb(255, 255, 255);
 }
 .app {
   width: 100%;
@@ -18,13 +18,14 @@ body {
 .appContainer {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 .title {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
   margin: 10px 0;
-  color: $purple;
+  color: black;
 }
 .form {
   display: flex;
@@ -44,4 +45,22 @@ body {
   position: relative;
   box-shadow: $boxShadow;
   z-index: 2;
+}
+.totalCost {
+  margin: 15px 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  .title {
+    font-size: 28px;
+  }
+  .form {
+    flex-direction: column;
+  }
+  .formButtonContainer {
+    margin-top: 7px;
+  }
 }

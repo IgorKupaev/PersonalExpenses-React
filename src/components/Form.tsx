@@ -1,9 +1,11 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
-import React, { FC, useState } from 'react'
+import React, { FC, useState } from 'react';
+import { SpendingItem } from '../types/types';
 
 interface FormProps {
-  fetch: () => void
+  fetch: () => void,
+  items: SpendingItem[]
 }
 
 const getFormatedDate = () => {
@@ -19,7 +21,9 @@ const getFormatedDate = () => {
   return `${year}-${month}-${day}`;
 }
 
-const Form: FC<FormProps> = ({fetch}) => {
+const getTotal = (arr:SpendingItem[]) => arr.reduce((acc, item) => acc + Number(item.cost), 0);
+
+const Form: FC<FormProps> = ({fetch, items}) => {
   const [reason, setReason] = useState<string>('');
   const [cost, setCost] = useState<string>('');
   
@@ -41,32 +45,39 @@ const Form: FC<FormProps> = ({fetch}) => {
   }
 
   return (
-    <div className="form">
-      <TextField
-        onChange={e => setReason(e.target.value)}
-        value={reason}
-        color='secondary'
-        fullWidth id="outlined-basic"
-        label="Куда потрачено"
-        variant="outlined"
-      />
-      <TextField
-        onChange={e => setCost(e.target.value)}
-        value={cost}
-        color='secondary'
-        type='number'
-        fullWidth
-        id="outlined-basic"
-        label="Сколько потрачено"
-        variant="outlined"
-      />
-      <div className="formButtonContainer">
-        <Button onClick={createItem} color="secondary" size="large" variant="contained">
-          Добавить
-        </Button>
+    <>
+      <div className="form">
+        <TextField
+          inputProps={{maxLength: 21}}
+          onChange={e => setReason(e.target.value)}
+          value={reason}
+          color='success'
+          fullWidth id="outlined-basic"
+          label="Куда потрачено"
+          variant="outlined"
+        />
+        <TextField
+          inputProps={{max: 9999999}}
+          onChange={e => setCost(e.target.value)}
+          value={cost}
+          color='success'
+          type='number'
+          fullWidth
+          id="outlined-basic"
+          label="Сколько потрачено"
+          variant="outlined"
+        />
+        <div className="formButtonContainer">
+          <Button onClick={createItem} color="success" size="large" variant="contained">
+            Добавить
+          </Button>
+        </div>
       </div>
-    </div>
+      <div className="totalCost">
+        <span>Итого: {getTotal(items)}₽</span>
+      </div>
+    </>
   )
 }
 
-export default Form
+export default Form;
