@@ -23,7 +23,7 @@ const MainPage: FC = () => {
   return (
     <>
       <Title titleText='Учет личных расходов' />
-      <Form fetch={fetchExpenses} />
+      <Form items={spendingItems} fetch={fetchExpenses} />
       <ItemsList fetch={fetchExpenses} spendingItems={spendingItems} />
     </>
   )

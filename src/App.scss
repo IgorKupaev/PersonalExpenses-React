@@ -46,3 +46,10 @@ body {
   box-shadow: $boxShadow;
   z-index: 2;
 }
+.totalCost {
+  margin: 15px 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+}
