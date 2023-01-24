@@ -1,5 +1,47 @@
+$purple: #9c27b0;
+$backColor: #cddcfe;
+$borderRadius: 3px;
+$boxShadow: 1px 0px 3px #000;
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+body {
+  background-color: rgb(224, 241, 255);
+}
+.app {
+  width: 100%;
+}
+.appContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+  color: $purple;
+}
+.form {
+  display: flex;
+  align-items: center;
+  background-color: $backColor;
+  padding: 15px;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+}
+.formButtonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.list {
+  position: relative;
+  box-shadow: $boxShadow;
+  z-index: 2;
 }

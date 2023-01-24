@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
 import './App.scss'
+import MainPage from './pages/MainPage'
 
-const App = () => {
+
+const App:FC = () => {
   return (
-    <div>Personal Expenses</div>
+    <div className="app">
+      <div className="appContainer">
+        <MainPage />
+      </div>
+    </div>
   )
 }
 
