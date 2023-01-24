@@ -1,6 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
-import React, { FC, useState } from 'react'
+import React, { FC, useState } from 'react';
 import { SpendingItem } from '../types/types';
 
 interface FormProps {
@@ -48,6 +48,7 @@ const Form: FC<FormProps> = ({fetch, items}) => {
     <>
       <div className="form">
         <TextField
+          inputProps={{maxLength: 21}}
           onChange={e => setReason(e.target.value)}
           value={reason}
           color='success'
@@ -56,6 +57,7 @@ const Form: FC<FormProps> = ({fetch, items}) => {
           variant="outlined"
         />
         <TextField
+          inputProps={{max: 9999999}}
           onChange={e => setCost(e.target.value)}
           value={cost}
           color='success'
@@ -78,4 +80,4 @@ const Form: FC<FormProps> = ({fetch, items}) => {
   )
 }
 
-export default Form
+export default Form;

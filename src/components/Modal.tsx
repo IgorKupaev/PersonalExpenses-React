@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { IModalInputs } from '../types/types';
 
@@ -11,7 +11,6 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, editItem}) => {
-
   return (
     <Dialog onClose={() => setModal(!modal)} open={modal}>
       <DialogContent>
@@ -55,4 +54,4 @@ const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, ed
   )
 }
 
-export default Modal
+export default Modal;

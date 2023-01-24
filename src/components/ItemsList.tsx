@@ -1,8 +1,9 @@
-import React, { FC, useState } from 'react'
-import { IModalInputs, SpendingItem } from '../types/types'
-import Item from './Item'
-import axios from 'axios'
-import Modal from './Modal'
+import React, { FC, useState } from 'react';
+import { IModalInputs, SpendingItem } from '../types/types';
+import Item from './Item';
+import axios from 'axios';
+import Modal from './Modal';
+import ConfirmRemove from './ConfirmRemove';
 
 interface ListProps {
   spendingItems: SpendingItem[],
@@ -11,10 +12,12 @@ interface ListProps {
 
 const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
   const [modal, setModal] = useState<boolean>(false);
+  const [confirmRemove, setConfirmRemove] = useState<boolean>(false);
   const [modalInputs, setModalInputs] = useState<IModalInputs>({
     place: '', cost: 0, date: ''
   })
   const [changeId, setChangeId] = useState<string>('');
+  const [removeId, setRemoveId] = useState<string>('');
 
   const modalInit = (id: string) => {
     setChangeId(id);
@@ -23,9 +26,14 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
     setModalInputs({place: changeItem.place, cost: changeItem.cost, date: changeItem.date});
   }
 
-  const removeItem = async (index: string) => {
+  const removeInit = (id: string) => {
+    setRemoveId(id);
+    setConfirmRemove(true);
+  }
+
+  const removeItem = async () => {
     try {
-      const id = spendingItems[Number(index)]._id;
+      const id = spendingItems[Number(removeId)]._id;
       await axios.delete(`http://localhost:8000/expense/${id}`);
       await fetch();
     } catch (error) {
@@ -56,6 +64,11 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
   }
   return (
     <div className="list">
+      <ConfirmRemove
+        confirmRemove={confirmRemove}
+        setConfirmRemove={setConfirmRemove}
+        removeItem={removeItem}
+      />
       <Modal
         setModalInputs={setModalInputs}
         modalInputs={modalInputs}
@@ -65,11 +78,17 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
       />
       {spendingItems.map((item, index) => {
         return (
-          <Item modalInit={modalInit} remove={removeItem} key={item._id} item={item} index={String(index)} />
+          <Item
+            removeInit={removeInit}
+            modalInit={modalInit}
+            key={item._id}
+            item={item}
+            index={String(index)}
+          />
         )
       })}
     </div>
   )
 }
 
-export default ItemsList
+export default ItemsList;

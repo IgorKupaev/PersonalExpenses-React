@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
 interface TitleProps {
   titleText: string
@@ -6,4 +6,4 @@ interface TitleProps {
 
 const Title: FC<TitleProps> = ({titleText}) => <h2 className='title'>{titleText}</h2>;
 
-export default Title
+export default Title;
