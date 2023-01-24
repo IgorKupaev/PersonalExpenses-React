@@ -44,6 +44,10 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
     }
   }
 
+  const openPage = (item: SpendingItem) => {
+    navigate(`/${item._id}`)
+  }
+
   const editItem = async () => {
     try {
       let item = spendingItems[Number(changeId)]
@@ -86,7 +90,7 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
           spendingItems.map((item, index) => {
             return (
               <Item
-                openPage={(item) => navigate(`/${item._id}`)}
+                openPage={openPage}
                 removeInit={removeInit}
                 modalInit={modalInit}
                 key={item._id}
@@ -114,7 +118,7 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
         modal={modal}
         editItem={editItem}
       />
-      <div className="list">
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <CircularProgress color="success" />
       </div>
     </>

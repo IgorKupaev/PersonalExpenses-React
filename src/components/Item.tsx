@@ -3,6 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import React, { FC, useRef } from 'react';
 import { SpendingItem } from '../types/types';
+import MoreIcon from '@mui/icons-material/More';
 
 interface itemProps {
   item: SpendingItem,
@@ -20,10 +21,12 @@ const getShortString = (str: string) => {
 }
 
 const Item: FC<itemProps> = ({item, index, modalInit, removeInit, openPage}) => {
+  const clickHandler = () => {
+    openPage(item)
+  }
   const itemRef = useRef<HTMLSpanElement | null>(null);
   return (
     <ListItem
-      onClick={() => openPage(item)}
       id={index}
       divider
     >
@@ -31,8 +34,11 @@ const Item: FC<itemProps> = ({item, index, modalInit, removeInit, openPage}) => 
         primary={`${Number(index) + 1}. ${getShortString(item.place)}, ${item.date}, ${item.cost}₽`}
       />
       <EditIcon onClick={() => modalInit(index)} style={{cursor: 'pointer', marginRight: 7}} color='success' />
-      <span onClick={() => removeInit(index)} ref={itemRef}>
-        <DeleteIcon  style={{cursor: 'pointer'}} color='success' />
+      <span style={{cursor: 'pointer', marginRight: 7}} onClick={() => removeInit(index)} ref={itemRef}>
+        <DeleteIcon style={{cursor: 'pointer'}} color='success' />
+      </span>
+      <span onClick={() => clickHandler()}>
+        <MoreIcon style={{cursor: 'pointer'}} color='success'/>
       </span>
     </ListItem>
   )

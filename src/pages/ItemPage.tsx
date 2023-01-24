@@ -57,7 +57,7 @@ const ItemPage: FC = () => {
     <div>
         <Title titleText='Информация о расходе' />
         <Button onClick={() => navigate('/')} style={{margin: '15px'}} color="success" size="large" variant="contained">Вернуться</Button>
-        <div className="itemContainer">
+        <div style={{display: 'flex', justifyContent: 'center'}}>
         <CircularProgress color="success" />
         </div>
     </div>

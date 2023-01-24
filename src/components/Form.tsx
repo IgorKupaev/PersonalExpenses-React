@@ -57,7 +57,7 @@ const Form: FC<FormProps> = ({fetch, items}) => {
           variant="outlined"
         />
         <TextField
-          inputProps={{max: 9999999}}
+          inputProps={{max: 9999999, min: 0}}
           onChange={e => setCost(e.target.value)}
           value={cost}
           color='success'
