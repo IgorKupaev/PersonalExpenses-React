@@ -7,14 +7,12 @@ import MainPage from './pages/MainPage';
 const App:FC = () => {
   return (
     <BrowserRouter>
-      <div className="app">
-        <div className="appContainer">   
-          <Routes>
-            <Route path="/:id" element={<ItemPage />}/>
-            <Route path="*" element={<MainPage />}/>
-            <Route path="/" element={<MainPage />}/>
-        </Routes>
-        </div>
+      <div className="appContainer">  
+        <Routes>
+          <Route path="/:id" element={<ItemPage />}/>
+          <Route path="*" element={<MainPage />}/>
+          <Route path="/" element={<MainPage />}/>
+      </Routes>
       </div>
     </BrowserRouter>
   )

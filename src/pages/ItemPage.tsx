@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import { SpendingItem } from '../types/types';
+import { ISpendingItem } from '../types/ISpendingItem';
 import { useParams, useNavigate } from 'react-router-dom';
 import Title from '../components/Title';
 import { Button, CircularProgress } from '@mui/material';
@@ -13,7 +13,7 @@ const getShortString = (str: string | undefined) => {
 }
 
 const ItemPage: FC = () => {
-  const [item, setItem] = useState<SpendingItem | null>(null);
+  const [item, setItem] = useState<ISpendingItem | null>(null);
   const params = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,7 +21,7 @@ const ItemPage: FC = () => {
   }, []);
   async function fetchItem() {
     try {
-      const response = await axios.get<SpendingItem[]>('http://localhost:8000/expenses');
+      const response = await axios.get<ISpendingItem[]>('http://localhost:8000/expenses');
       let arr = response.data;
       for (let item of arr) {
         if (item._id === params.id) {

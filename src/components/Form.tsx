@@ -1,12 +1,8 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { FC, useState } from 'react';
-import { SpendingItem } from '../types/types';
-
-interface FormProps {
-  fetch: () => void,
-  items: SpendingItem[]
-}
+import { IFormProps } from '../types/IFormProps';
+import { ISpendingItem } from '../types/ISpendingItem';
 
 const getFormatedDate = () => {
   let year = new Date().getFullYear();
@@ -21,9 +17,9 @@ const getFormatedDate = () => {
   return `${year}-${month}-${day}`;
 }
 
-const getTotal = (arr:SpendingItem[]) => arr.reduce((acc, item) => acc + Number(item.cost), 0);
+const getTotal = (arr:ISpendingItem[]) => arr.reduce((acc, item) => acc + Number(item.cost), 0);
 
-const Form: FC<FormProps> = ({fetch, items}) => {
+const Form: FC<IFormProps> = ({fetch, items}) => {
   const [reason, setReason] = useState<string>('');
   const [cost, setCost] = useState<string>('');
   

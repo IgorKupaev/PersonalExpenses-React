@@ -1,49 +1,35 @@
 import React, { FC } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
-import { IModalInputs } from '../types/types';
+import CustomTextField from './CustomTextField';
+import styles from './../styles/Modal.module.scss';
+import { IModalProps } from '../types/IModalProps';
 
-interface ModalProps {
-  modal: boolean,
-  setModal: (value: boolean) => void,
-  modalInputs: IModalInputs,
-  setModalInputs: (value: IModalInputs) => void,
-  editItem: () => void
-}
-
-const Modal: FC<ModalProps> = ({modal, setModal, modalInputs, setModalInputs, editItem}) => {
+const Modal: FC<IModalProps> = ({modal, setModal, modalInputs, setModalInputs, editItem}) => {
   return (
     <Dialog onClose={() => setModal(!modal)} open={modal}>
       <DialogContent>
       <DialogTitle>Изменить данные расходов</DialogTitle>
-        <TextField
+      <CustomTextField
           defaultValue={modalInputs.place}
           onChange={e => setModalInputs({...modalInputs, place: e.currentTarget.value})}
-          fullWidth
           label="Куда было потрачено"
-          variant="filled"
-          color="success"
         />
-        <TextField
-          type="number"
+        <CustomTextField
           defaultValue={modalInputs.cost}
           onChange={e => setModalInputs({...modalInputs, cost: Number(e.currentTarget.value)})}
-          fullWidth
           label="Сколько было потрачено"
-          variant="filled"
-          color="success"
+          type="number"
+          inputProps={{max: 9999999, min: 0}}
         />
-        <TextField
-          type="date"
+        <CustomTextField
           defaultValue={modalInputs.date}
           onChange={e => setModalInputs({...modalInputs, date: e.currentTarget.value})}
-          fullWidth
+          type="date"
           label="Когда было потрачено"
-          variant="filled"
-          color="success"
         />
         <Button
           onClick={editItem}
-          style={{marginTop: 5}}
+          className={styles.button}
           color='success'
           variant="contained"
         >

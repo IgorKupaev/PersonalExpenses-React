@@ -1,18 +1,16 @@
 import React, { FC, useState } from 'react';
-import { IModalInputs, SpendingItem } from '../types/types';
+import { ISpendingItem } from '../types/ISpendingItem';
 import Item from './Item';
 import axios from 'axios';
 import Modal from './Modal';
 import ConfirmRemove from './ConfirmRemove';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import styles from './../styles/progress.module.scss';
+import { IModalInputs } from '../types/IModalInputs';
+import { IListProps } from '../types/IListProps';
 
-interface ListProps {
-  spendingItems: SpendingItem[],
-  fetch: () => void,
-}
-
-const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
+const ItemsList: FC<IListProps> = ({spendingItems, fetch}) => {
   const [modal, setModal] = useState<boolean>(false);
   const [confirmRemove, setConfirmRemove] = useState<boolean>(false);
   const [modalInputs, setModalInputs] = useState<IModalInputs>({
@@ -44,7 +42,7 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
     }
   }
 
-  const openPage = (item: SpendingItem) => {
+  const openPage = (item: ISpendingItem) => {
     navigate(`/${item._id}`)
   }
 
@@ -118,7 +116,7 @@ const ItemsList: FC<ListProps> = ({spendingItems, fetch}) => {
         modal={modal}
         editItem={editItem}
       />
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div className={styles.progressContainer} >
         <CircularProgress color="success" />
       </div>
     </>
