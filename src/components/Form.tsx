@@ -1,43 +1,25 @@
 import { Button, TextField } from '@mui/material';
-import axios from 'axios';
 import React, { FC, useState } from 'react';
+import { fetchExpenses, postItem } from '../requests/requests';
 import { IFormProps } from '../types/IFormProps';
 import { ISpendingItem } from '../types/ISpendingItem';
 
-const getFormatedDate = () => {
-  let year = new Date().getFullYear();
-  let day = String(new Date().getDate());
-  let month = String(new Date().getMonth() + 1);
-  if (month.length < 2) {
-    month = `0${month}`;
-  }
-  if (day.length < 2) {
-    day = `0${day}`;
-  }
-  return `${year}-${month}-${day}`;
-}
-
 const getTotal = (arr:ISpendingItem[]) => arr.reduce((acc, item) => acc + Number(item.cost), 0);
 
-const Form: FC<IFormProps> = ({fetch, items}) => {
+const Form: FC<IFormProps> = ({setItems, items, showError}) => {
   const [reason, setReason] = useState<string>('');
   const [cost, setCost] = useState<string>('');
   
   const createItem = async () => {
-    if (reason && cost) {
-      try {
-        const newItem = {
-          place: reason,
-          cost: cost,
-          date: getFormatedDate()
-        }
-        await axios.post('http://localhost:8000/expense', newItem);
-        await fetch();
-        setCost('');
-        setReason('');
-      } catch (error) {
-      }
-    }
+    await postItem(reason, cost).then(async () => {
+      setCost('');
+      setReason('');
+      await fetchExpenses().then((res) => {
+        setItems(res);
+      });
+    }).catch(() => {
+      showError('Ошибка во время добавления расходов');
+    })
   }
 
   return (

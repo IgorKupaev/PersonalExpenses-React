@@ -2,5 +2,6 @@ import { ISpendingItem } from "./ISpendingItem";
 
 export interface IListProps {
   spendingItems: ISpendingItem[],
-  fetch: () => void,
+  setItems: (value: ISpendingItem[]) => void,
+  showError: (value: string) => void,
 }

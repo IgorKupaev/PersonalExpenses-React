@@ -1,13 +1,14 @@
-import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import { ISpendingItem } from '../types/ISpendingItem';
 import { useParams, useNavigate } from 'react-router-dom';
 import Title from '../components/Title';
 import { Button, CircularProgress } from '@mui/material';
+import { fetchItem } from '../requests/requests';
+import styles from '../styles/ItemPage.module.scss';
 
 const getShortString = (str: string | undefined) => {
   if (str && str.length > 35) {
-    return str.slice(0, 35) + '...  '
+    return str.slice(0, 35) + '...  ';
   }
   return str;
 }
@@ -16,21 +17,12 @@ const ItemPage: FC = () => {
   const [item, setItem] = useState<ISpendingItem | null>(null);
   const params = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetchItem();
+    fetchItem(params).then((res) => {
+      setItem(res || null);
+    });
   }, []);
-  async function fetchItem() {
-    try {
-      const response = await axios.get<ISpendingItem[]>('http://localhost:8000/expenses');
-      let arr = response.data;
-      for (let item of arr) {
-        if (item._id === params.id) {
-          setItem(item);
-        }
-      }
-    } catch (error) {
-    }
-  }
   if (item) {
     return (
       <div>
@@ -57,7 +49,8 @@ const ItemPage: FC = () => {
     <div>
         <Title titleText='Информация о расходе' />
         <Button onClick={() => navigate('/')} style={{margin: '15px'}} color="success" size="large" variant="contained">Вернуться</Button>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div className={styles.container}>
+          <div>Расход не найден :/</div>
         <CircularProgress color="success" />
         </div>
     </div>

@@ -6,18 +6,16 @@ import MoreIcon from '@mui/icons-material/More';
 import styles from './../styles/item.module.scss';
 import { IItemProps } from '../types/IItemProps';
 
-
-
 const getShortString = (str: string) => {
   if (str.length > 20) {
-    return str.slice(0, 20) + '...  '
+    return str.slice(0, 20) + '...  ';
   }
   return str;
 }
 
 const Item: FC<IItemProps> = ({item, index, modalInit, removeInit, openPage}) => {
   const clickHandler = () => {
-    openPage(item)
+    openPage(item);
   }
   const itemRef = useRef<HTMLSpanElement | null>(null);
   return (

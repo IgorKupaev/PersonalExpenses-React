@@ -1,6 +1,7 @@
 import { ISpendingItem } from "./ISpendingItem";
 
 export interface IFormProps {
-  fetch: () => void,
-  items: ISpendingItem[]
+  items: ISpendingItem[],
+  setItems: (items: ISpendingItem[]) => void,
+  showError: (body: string) => void,
 }

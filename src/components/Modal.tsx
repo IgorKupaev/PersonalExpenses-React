@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Button, Dialog, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import CustomTextField from './CustomTextField';
 import styles from './../styles/Modal.module.scss';
 import { IModalProps } from '../types/IModalProps';
@@ -9,7 +9,7 @@ const Modal: FC<IModalProps> = ({modal, setModal, modalInputs, setModalInputs, e
     <Dialog onClose={() => setModal(!modal)} open={modal}>
       <DialogContent>
       <DialogTitle>Изменить данные расходов</DialogTitle>
-      <CustomTextField
+        <CustomTextField
           defaultValue={modalInputs.place}
           onChange={e => setModalInputs({...modalInputs, place: e.currentTarget.value})}
           label="Куда было потрачено"

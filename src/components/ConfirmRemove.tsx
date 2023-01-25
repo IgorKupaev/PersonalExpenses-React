@@ -1,12 +1,7 @@
 import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import React, { FC } from 'react';
+import { IConfirmRemoveProps } from '../types/IConfirmRemoveProps';
 import styles from './../styles/ConfirmRemove.module.scss';
-
-interface IConfirmRemoveProps {
-  setConfirmRemove: (value: boolean) => void,
-  confirmRemove: boolean,
-  removeItem: () => void
-}
 
 const ConfirmRemove: FC<IConfirmRemoveProps> = ({setConfirmRemove, confirmRemove, removeItem}) => {
   const handlerClick = () => {
