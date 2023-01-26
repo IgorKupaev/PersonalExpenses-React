@@ -76,8 +76,7 @@ const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
         />
         <div className={styles.list}>
           {
-          spendingItems.map((item, index) => {
-            return (
+          spendingItems.map((item, index) => 
               <Item
                 openPage={openPage}
                 removeInit={removeInit}
@@ -85,14 +84,15 @@ const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
                 key={item._id}
                 item={item}
                 index={String(index)}
-              />
-            )
-          })
+              />)
           }
         </div>
       </>
     )
   }
+
+
+  
   return (
     <>
       <ConfirmRemove

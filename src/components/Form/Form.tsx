@@ -19,6 +19,7 @@ const Form: FC<IFormProps> = ({setItems, items, showError}) => {
       await fetchExpenses().then((res) => {
         setItems(res);
       });
+
     }).catch(() => {
       showError('Ошибка во время добавления расходов');
     })
@@ -28,13 +29,13 @@ const Form: FC<IFormProps> = ({setItems, items, showError}) => {
     <>
       <div className={styles.form}>
         <CustomTextField
-          inputProps={{maxLength: 21}}
+          inputProps={{maxLength: 30}}
           onChange={e => setReason(e.currentTarget.value)}
           label="Куда потрачено"
           defaultValue={reason}
         />
         <CustomTextField
-          inputProps={{max: 9999999, min: 0}}
+          inputProps={{max: 999999, min: 0}}
           onChange={e => setCost(e.currentTarget.value)}
           label="Сколько потрачено"
           type='number'

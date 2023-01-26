@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IModalInputs } from "../types/IModalInputs";
 import { ISpendingItem } from "../types/ISpendingItem";
 
 const getFormatedDate = () => {
@@ -14,7 +15,7 @@ const getFormatedDate = () => {
   return `${year}-${month}-${day}`;
 }
 
-const checkModalInputs = (item: ISpendingItem, modalInputs: {place: string, date: string, cost: number}) => {
+const checkModalInputs = (item: ISpendingItem, modalInputs: IModalInputs) => {
   return !Object.values(modalInputs).includes(0)
          && !Object.values(modalInputs).includes('')
          && (modalInputs.cost !== item.cost
@@ -52,7 +53,7 @@ export const deleteItem = async(id: string) => {
   await axios.delete(`http://localhost:8000/expense/${id}`);
 }
 
-export const changeItem = async (item: ISpendingItem, modalInputs: {place: string, date: string, cost: number}) => {
+export const changeItem = async (item: ISpendingItem, modalInputs: IModalInputs) => {
   if (checkModalInputs(item, modalInputs)) {
       const body = {
         ...modalInputs, id: item._id

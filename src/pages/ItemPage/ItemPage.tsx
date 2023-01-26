@@ -6,13 +6,6 @@ import { Button, CircularProgress } from '@mui/material';
 import { fetchItem } from '../../requests/requests';
 import styles from './ItemPage.module.scss';
 
-const getShortString = (str: string | undefined) => {
-  if (str && str.length > 35) {
-    return str.slice(0, 35) + '...  ';
-  }
-  return str;
-}
-
 const ItemPage: FC = () => {
   const [item, setItem] = useState<ISpendingItem | null>(null);
   const params = useParams();
@@ -32,8 +25,8 @@ const ItemPage: FC = () => {
         <div className="itemId">
             ID расхода: {item?._id}
           </div>
-          <div className="itemPlace">
-            Куда было потрачено: {getShortString(item?.place)}
+          <div className={styles.itemPlace}>
+            Куда было потрачено: {item?.place}
           </div>
           <div className="itemDate">
             Когда было потрачено: {item?.date}

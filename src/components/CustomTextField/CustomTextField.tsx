@@ -7,12 +7,12 @@ const CustomTextField:FC<ICustomTextFieldProps> = ({defaultValue, onChange, labe
   return (
     <TextField
       className={styles.field}
-      defaultValue={defaultValue}
+      value={defaultValue}
       onChange={e => onChange(e)}
       fullWidth
       id="outlined-basic"
       label={label}
-      variant="outlined"
+      variant="filled"
       color="success"
       type={type ? type : 'text'}
       inputProps={inputProps ? inputProps : {}}

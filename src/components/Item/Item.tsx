@@ -6,25 +6,19 @@ import MoreIcon from '@mui/icons-material/More';
 import styles from './item.module.scss';
 import { IItemProps } from '../../types/propTypes/IItemProps';
 
-const getShortString = (str: string) => {
-  if (str.length > 20) {
-    return str.slice(0, 20) + '...  ';
-  }
-  return str;
-}
-
 const Item: FC<IItemProps> = ({item, index, modalInit, removeInit, openPage}) => {
   const clickHandler = () => {
     openPage(item);
   }
   const itemRef = useRef<HTMLSpanElement | null>(null);
+  const itemInner = <>{Number(index) + 1}. <span className={styles.placeSpan}>{item.place}</span>, {item.date}, {item.cost}₽</>
   return (
     <ListItem
       id={index}
       divider
     >
       <ListItemText
-        primary={`${Number(index) + 1}. ${getShortString(item.place)}, ${item.date}, ${item.cost}₽`}
+        primary={itemInner}
       />
       <EditIcon onClick={() => modalInit(index)} className={styles.marginPointer} color='success' />
       <span className={styles.marginPointer} onClick={() => removeInit(index)} ref={itemRef}>

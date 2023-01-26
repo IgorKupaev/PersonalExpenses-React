@@ -10,6 +10,7 @@ const Modal: FC<IModalProps> = ({modal, setModal, modalInputs, setModalInputs, e
       <DialogContent>
       <DialogTitle>Изменить данные расходов</DialogTitle>
         <CustomTextField
+          inputProps={{maxLength: 30}}
           defaultValue={modalInputs.place}
           onChange={e => setModalInputs({...modalInputs, place: e.currentTarget.value})}
           label="Куда было потрачено"
@@ -19,7 +20,7 @@ const Modal: FC<IModalProps> = ({modal, setModal, modalInputs, setModalInputs, e
           onChange={e => setModalInputs({...modalInputs, cost: Number(e.currentTarget.value)})}
           label="Сколько было потрачено"
           type="number"
-          inputProps={{max: 9999999, min: 0}}
+          inputProps={{max: 99999, min: 0}}
         />
         <CustomTextField
           defaultValue={modalInputs.date}
