@@ -3,8 +3,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import React, { FC, useRef } from 'react';
 import MoreIcon from '@mui/icons-material/More';
-import styles from './../styles/item.module.scss';
-import { IItemProps } from '../types/IItemProps';
+import styles from './item.module.scss';
+import { IItemProps } from '../../types/propTypes/IItemProps';
 
 const getShortString = (str: string) => {
   if (str.length > 20) {

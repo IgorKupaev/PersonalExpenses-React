@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ISpendingItem } from '../types/ISpendingItem';
+import { ISpendingItem } from '../../types/ISpendingItem';
 import { useParams, useNavigate } from 'react-router-dom';
-import Title from '../components/Title';
+import Title from '../../components/Title/Title';
 import { Button, CircularProgress } from '@mui/material';
-import { fetchItem } from '../requests/requests';
-import styles from '../styles/ItemPage.module.scss';
+import { fetchItem } from '../../requests/requests';
+import styles from './ItemPage.module.scss';
 
 const getShortString = (str: string | undefined) => {
   if (str && str.length > 35) {
@@ -28,7 +28,7 @@ const ItemPage: FC = () => {
       <div>
         <Title titleText='Информация о расходе' />
         <Button onClick={() => navigate('/')} style={{margin: '15px'}} color="success" size="large" variant="contained">Вернуться</Button>
-        <div className="itemContainer">
+        <div className={styles.itemContainer}>
         <div className="itemId">
             ID расхода: {item?._id}
           </div>
@@ -50,7 +50,7 @@ const ItemPage: FC = () => {
         <Title titleText='Информация о расходе' />
         <Button onClick={() => navigate('/')} style={{margin: '15px'}} color="success" size="large" variant="contained">Вернуться</Button>
         <div className={styles.container}>
-          <div>Расход не найден :/</div>
+        <div>Расход не найден :/</div>
         <CircularProgress color="success" />
         </div>
     </div>

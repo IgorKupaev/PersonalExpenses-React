@@ -27,7 +27,7 @@ export const fetchExpenses = async () => {
   return response.data;
 }
 
-export async function fetchItem(params: any) {
+export const fetchItem = async (params: any) => {
   const response = await axios.get<ISpendingItem[]>('http://localhost:8000/expenses');
   let arr = response.data;
   for (let item of arr) {
@@ -37,7 +37,7 @@ export async function fetchItem(params: any) {
   }
 }
 
-export async function postItem(reason: string, cost: string) {
+export const postItem = async (reason: string, cost: string) => {
   if (reason && cost) {
     const newItem = {
       place: reason,
@@ -48,11 +48,11 @@ export async function postItem(reason: string, cost: string) {
   }
 }
 
-export async function deleteItem(id: string) {
+export const deleteItem = async(id: string) => {
   await axios.delete(`http://localhost:8000/expense/${id}`);
 }
 
-export async function changeItem(item: ISpendingItem, modalInputs: {place: string, date: string, cost: number}) {
+export const changeItem = async (item: ISpendingItem, modalInputs: {place: string, date: string, cost: number}) => {
   if (checkModalInputs(item, modalInputs)) {
       const body = {
         ...modalInputs, id: item._id

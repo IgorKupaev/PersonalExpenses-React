@@ -1,8 +1,10 @@
 import { Button, TextField } from '@mui/material';
 import React, { FC, useState } from 'react';
-import { fetchExpenses, postItem } from '../requests/requests';
-import { IFormProps } from '../types/IFormProps';
-import { ISpendingItem } from '../types/ISpendingItem';
+import { fetchExpenses, postItem } from '../../requests/requests';
+import { IFormProps } from '../../types/propTypes/IFormProps';
+import { ISpendingItem } from '../../types/ISpendingItem';
+import styles from './Form.module.scss';
+import CustomTextField from '../CustomTextField/CustomTextField';
 
 const getTotal = (arr:ISpendingItem[]) => arr.reduce((acc, item) => acc + Number(item.cost), 0);
 
@@ -24,34 +26,27 @@ const Form: FC<IFormProps> = ({setItems, items, showError}) => {
 
   return (
     <>
-      <div className="form">
-        <TextField
+      <div className={styles.form}>
+        <CustomTextField
           inputProps={{maxLength: 21}}
-          onChange={e => setReason(e.target.value)}
-          value={reason}
-          color='success'
-          fullWidth id="outlined-basic"
+          onChange={e => setReason(e.currentTarget.value)}
           label="Куда потрачено"
-          variant="outlined"
+          defaultValue={reason}
         />
-        <TextField
+        <CustomTextField
           inputProps={{max: 9999999, min: 0}}
-          onChange={e => setCost(e.target.value)}
-          value={cost}
-          color='success'
-          type='number'
-          fullWidth
-          id="outlined-basic"
+          onChange={e => setCost(e.currentTarget.value)}
           label="Сколько потрачено"
-          variant="outlined"
+          type='number'
+          defaultValue={cost}
         />
-        <div className="formButtonContainer">
+        <div className={styles.formButtonContainer}>
           <Button onClick={createItem} color="success" size="large" variant="contained">
             Добавить
           </Button>
         </div>
       </div>
-      <div className="totalCost">
+      <div className={styles.totalCost}>
         <span>Итого: {getTotal(items)}₽</span>
       </div>
     </>

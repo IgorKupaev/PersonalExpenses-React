@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
-import Form from './../components/Form';
-import ItemsList from './../components/ItemsList';
-import Title from './../components/Title';
+import Form from '../components/Form/Form';
+import ItemsList from '../components/ItemsList/ItemsList';
+import Title from '../components/Title/Title';
 import { ISpendingItem } from '../types/ISpendingItem';
 import { fetchExpenses } from '../requests/requests';
 import SimpleSnackbar from '../components/SimpleSnackbar';

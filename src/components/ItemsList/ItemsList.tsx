@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react';
-import { ISpendingItem } from '../types/ISpendingItem';
-import Item from './Item';
-import Modal from './Modal';
-import ConfirmRemove from './ConfirmRemove';
+import { ISpendingItem } from '../../types/ISpendingItem';
+import Item from '../Item/Item';
+import Modal from '../Modal/Modal';
+import ConfirmRemove from '../ConfirmRemove/ConfirmRemove';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import styles from './../styles/progress.module.scss';
-import { IModalInputs } from '../types/IModalInputs';
-import { IListProps } from '../types/IListProps';
-import { changeItem, deleteItem, fetchExpenses as fetch } from '../requests/requests';
+import styles from './ItemList.module.scss';
+import { IModalInputs } from '../../types/IModalInputs';
+import { IListProps } from '../../types/propTypes/IListProps';
+import { changeItem, deleteItem, fetchExpenses as fetch } from '../../requests/requests';
 
 const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
   const [modal, setModal] = useState<boolean>(false);
@@ -36,10 +36,10 @@ const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
   const removeItem = async () => {
     await deleteItem(spendingItems[Number(removeId)]._id).then(async () => {
       await fetch().then((res) => {
-        setItems(res)
+        setItems(res);
       });
     }).catch(() => {
-      showError('Ошибка во время удаления расходов')
+      showError('Ошибка во время удаления расходов');
     });
   }
 
@@ -54,7 +54,7 @@ const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
         setItems(res);
       });
     }).catch(() => {
-      showError('Ошибка во время редактирования расходов')
+      showError('Ошибка во время редактирования расходов');
     })
     setModal(false);
   }
@@ -74,7 +74,7 @@ const ItemsList: FC<IListProps> = ({spendingItems, setItems, showError}) => {
           modal={modal}
           editItem={editItem}
         />
-        <div className="list">
+        <div className={styles.list}>
           {
           spendingItems.map((item, index) => {
             return (

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
-import CustomTextField from './CustomTextField';
-import styles from './../styles/Modal.module.scss';
-import { IModalProps } from '../types/IModalProps';
+import CustomTextField from '../CustomTextField/CustomTextField';
+import styles from './Modal.module.scss';
+import { IModalProps } from '../../types/propTypes/IModalProps';
 
 const Modal: FC<IModalProps> = ({modal, setModal, modalInputs, setModalInputs, editItem}) => {
   return (

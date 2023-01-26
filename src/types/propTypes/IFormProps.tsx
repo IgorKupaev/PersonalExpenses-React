@@ -1,4 +1,4 @@
-import { ISpendingItem } from "./ISpendingItem";
+import { ISpendingItem } from "./../ISpendingItem";
 
 export interface IFormProps {
   items: ISpendingItem[],

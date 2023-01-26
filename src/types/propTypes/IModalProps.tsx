@@ -1,4 +1,4 @@
-import { IModalInputs } from "./IModalInputs";
+import { IModalInputs } from "./../IModalInputs";
 
 export interface IModalProps {
   modal: boolean,
