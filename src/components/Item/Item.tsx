@@ -11,7 +11,11 @@ const Item: FC<IItemProps> = ({item, index, modalInit, removeInit, openPage}) =>
     openPage(item);
   }
   const itemRef = useRef<HTMLSpanElement | null>(null);
-  const itemInner = <>{Number(index) + 1}. <span className={styles.placeSpan}>{item.place}</span>, {item.date}, {item.cost}₽</>
+  const itemInner = <>{Number(index) + 1}. 
+  <span className={styles.placeSpan}>
+    {item.place}
+  </span>,
+     {item.date}, {item.cost}₽</>
   return (
     <ListItem
       id={index}
