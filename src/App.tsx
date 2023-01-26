@@ -1,14 +1,20 @@
 import React, { FC } from 'react';
-import './App.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import styles from './App.module.scss';
+import ItemPage from './pages/ItemPage/ItemPage';
 import MainPage from './pages/MainPage';
 
 const App:FC = () => {
   return (
-    <div className="app">
-      <div className="appContainer">
-        <MainPage />
+    <BrowserRouter>
+      <div className={styles.appContainer}>  
+        <Routes>
+          <Route path="/:id" element={<ItemPage />}/>
+          <Route path="*" element={<MainPage />}/>
+          <Route path="/" element={<MainPage />}/>
+      </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 

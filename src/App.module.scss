@@ -16,22 +16,3 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px 0;
-  color: black;
-}
-
-@media (max-width: 767px) {
-  .title {
-    font-size: 28px;
-  }
-  .form {
-    flex-direction: column;
-  }
-  .formButtonContainer {
-    margin-top: 7px;
-  }
-}

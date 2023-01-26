@@ -1,0 +1,23 @@
+.progressContainer {
+  display: flex;
+  justify-content: center;
+}
+.list {
+  position: relative;
+  box-shadow: 1px 0px 5px #2e7d32;
+  z-index: 2;
+  & >* {
+    transition: all .2s ease;
+    background: #fafafa;
+  }
+  & >*:hover {
+    background: #2e7d326b;
+  }
+}
+.totalCost {
+  margin: 15px 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+}

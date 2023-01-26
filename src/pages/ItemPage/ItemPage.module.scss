@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  & >* {
+    margin-bottom: 15px;
+  }
+  & >*:first-child {
+    font-size: 18px;
+    background-color: #ebebeb;
+    margin-top: 30px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+  }
+}
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & >*:not(:last-child) {
+    margin-bottom: 7px
+  }
+  & >* {
+    font-size: 18px;
+    background-color: #fafafa;
+    padding: 15px
+  }
+}
+.itemPlace {
+  vertical-align: middle;
+  height: 100%;
+  padding-bottom: 6px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
